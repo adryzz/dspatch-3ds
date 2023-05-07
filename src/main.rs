@@ -1,10 +1,11 @@
 #![feature(fs_try_exists)]
 
+mod haxxstation;
+
 use std::fs::read;
 use std::path::Path;
 
 use ctru::prelude::*;
-use ctru::services::fs::{Archive, ArchiveID};
 use ctru::services::romfs::RomFS;
 
 const ROMFS_PATH0: &str = "romfs:/ds-download-station.nds";
@@ -16,11 +17,6 @@ const SDMC_PATH1: &str = "sdmc:/3ds/dspatch-3ds/xxxx - DS Download Station - Vol
 
 const OUT_PATH0: &str = "sdmc:/3ds/dspatch-3ds/haxxstation.nds";
 const OUT_PATH1: &str = "sdmc:/roms/nds/haxxstation.nds";
-
-const DS_HASH: [u8; 20] = [
-    0xF1, 0x8B, 0x55, 0xF3, 0xE1, 0x25, 0x9C, 0x03, 0xE1, 0x0D, 0x0E, 0xCB, 0x54, 0x96, 0x93, 0xB4,
-    0x29, 0x05, 0xCE, 0xB5,
-];
 
 fn main() {
     ctru::use_panic_handler();
