@@ -1,0 +1,32 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "custom",
+            "name": "Debug executable 'dspatch-3ds'",
+            "cargo": {
+                "args": [
+                    "3ds",
+                    "run"
+                ],
+                "filter": {
+                    "name": "dspatch-3ds",
+                    "kind": "bin"
+                }
+            },
+            "targetCreateCommands": ["target create ${workspaceFolder}/target/armv6k-nintendo-3ds/debug/dspatch-3ds.elf"],
+            "processCreateCommands": ["gdb-remote 10.0.0.5:4003"]
+        },
+        {
+            "type": "lldb",
+            "request": "custom",
+            "name": "Connect debugger to 'dspatch-3ds'",
+            "targetCreateCommands": ["target create ${workspaceFolder}/target/armv6k-nintendo-3ds/debug/dspatch-3ds.elf"],
+            "processCreateCommands": ["gdb-remote 10.0.0.5:4003"]
+        },
+    ]
+}
